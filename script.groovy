@@ -31,10 +31,10 @@ def commitVersionUpdate(){
         sh 'git status'
         sh 'git branch'
 
-        sh "git remote set-url origin https://${USER}:${PASS}github.com/CGL-DevOps/DevOps-Dynamically-Increment-Application-version-in-Jenkins-Pipeline.git"
+        sh "git remote set-url origin https://${USER}:${PASS}@github.com/CGL-DevOps/DevOps-Dynamically-Increment-Application-version-in-Jenkins-Pipeline.git"
         sh 'git add .'
-        sh 'git commit -m "ci:version bump'
-        sh 'git push origin HEAD:my-multi-pipeline-webhook'
+        sh 'git commit -m "ci:version bump ${BUILD_NUMBER}"'
+        sh 'git push https://${USER}:${PASS}@github.com/CGL-DevOps/DevOps-Dynamically-Increment-Application-version-in-Jenkins-Pipeline.git" HEAD:my-multi-pipeline-webhook'
     }
 }
 
