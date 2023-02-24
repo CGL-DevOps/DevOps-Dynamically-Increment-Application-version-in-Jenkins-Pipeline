@@ -1,9 +1,7 @@
 #!/usr/bin/env groovy
 
 def incrementVersion() {
-   sh 'mvn build-helper: parse-version versions:set \
--DnewVersion=\\\${parsedVersion.majorVersion}.\\\${paserdVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} \
-   versions:commit'
+   sh 'mvn build-helper: parse-version versions:set -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${paserdVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} versions:commit'
    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
    def version = matcher[0][1]
    env.IMAGE_NAME = '$version-$BUILD_NUMBER'
