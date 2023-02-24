@@ -24,7 +24,7 @@ Jenkins, Docker, Github, Git, Java, Maven
 
 ![image](image/Screenshot%202023-02-24%20at%2012.34.00%20am.png)
 
-###### Step 3: Configure Trigger token in Multi-pipeline in Jenkins UI
+###### Step 3:
 
 ![image](image/Screenshot%202023-02-24%20at%2012.36.06%20am.png)
 
