@@ -22,16 +22,29 @@ Jenkins, Docker, Github, Git, Java, Maven
 
 ###### Step 1: Increment patch version
 
-![image](image/Screenshot%202023-02-24%20at%2012.34.00%20am.png)
+![image](image/Screenshot%202023-02-24%20at%2012.18.14%20pm.png)
 
-###### Step 3:
+###### Step 2: Build Java application and clean old artifacts
 
-![image](image/Screenshot%202023-02-24%20at%2012.36.06%20am.png)
+![image](image/Screenshot%202023-02-24%20at%2012.18.39%20pm.png)
+![image](image/Screenshot%202023-02-24%20at%2012.18.19%20pm.png)
 
-###### Step 5: Connect with Jenkins in Github project repository
+![image](image/Screenshot%202023-02-24%20at%2012.18.28%20pm.png)
 
-![image](image/Screenshot%202023-02-24%20at%2012.46.07%20am.png)
+###### Step 3: Build Image with dynamic Docker Image Tag
 
-![image](image/Screenshot%202023-02-24%20at%201.05.10%20am.png)
+![image](image/Screenshot%202023-02-24%20at%2012.49.15%20pm.png)
 
-![image](image/Screenshot%202023-02-24%20at%201.05.25%20am.png)
+###### Step 4:Push Image to private DockerHub repository
+
+![image](image/Screenshot%202023-02-24%20at%2012.49.15%20pm.png)
+
+###### Step 5:Commit version update of Jenkins back to Git repository
+
+![image](image/Screenshot%202023-02-24%20at%2012.34.02%20pm.png)
+
+###### Step 6:Configure Jenkins pipeline to not trigger automatically on CI build commit to avoid commit loop
+
+![image](image/Screenshot%202023-02-24%20at%2012.35.00%20pm.png)
+![image](image/Screenshot%202023-02-24%20at%2012.36.02%20pm.png)
+![image](image/Screenshot%202023-02-24%20at%2012.53.37%20pm.png)
