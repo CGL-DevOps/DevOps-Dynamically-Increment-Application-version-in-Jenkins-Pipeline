@@ -25,7 +25,7 @@ def buildImage() {
 } 
 
 def commitVersionUpdate(){
-    withCredentials([usernamePassword(credentialsId: 'Github-Credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    withCredentials([usernamePassword(credentialsId: 'Jenkins-github-pat', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh 'git config --global user.email "jason.guanlin.cao@gmail.com"'
         sh 'git config --global user.name "jason"'
         sh 'git status'
@@ -33,6 +33,7 @@ def commitVersionUpdate(){
 
         sh "git remote set-url origin https://${USER}:${PASS}@github.com/CGL-DevOps/DevOps-Dynamically-Increment-Application-version-in-Jenkins-Pipeline.git"
         sh 'git add .'
+        echo "${USER} ${PASS}"
         sh 'git commit -m "ci:version bump ${BUILD_NUMBER}"'
         sh 'git push origin HEAD:my-multi-pipeline-webhook'
     }
