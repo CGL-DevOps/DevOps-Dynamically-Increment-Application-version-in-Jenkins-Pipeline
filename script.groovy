@@ -1,12 +1,14 @@
+#!/usr/bin/env groovy
+
 def incrementVersion() {
-   echo "increment app version!"
    sh 'mvn build-helper: parse-version versions:set \
-   -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${paserdVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} \
-   versions:commit \
+-DnewVersion=\\\${parsedVersion.majorVersion}.\\\${paserdVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} \
+   versions:commit'
    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
    def version = matcher[0][1]
    env.IMAGE_NAME = '$version-$BUILD_NUMBER'
 }
+
 def buildJar() {
     echo "building the application..."
     sh 'mvn clean package'
@@ -29,7 +31,7 @@ def commitVersionUpdate(){
         sh 'git branch'
 
         sh "git remote set-url origin https://${USER}:${PASS}github.com/CGL-DevOps/DevOps-Dynamically-Increment-Application-version-in-Jenkins-Pipeline.git"
-        sh 'git add .''
+        sh 'git add .'
         sh 'git commit -m "ci:version bump'
         sh 'git push origin HEAD:my-multi-pipeline-webhook'
     }
