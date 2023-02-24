@@ -2,12 +2,12 @@
 
 def incrementVersion() {
    sh 'mvn build-helper:parse-version versions:set \
-   -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${paserdVersion.minorVersion}.\\\${parsedVersion.newIncrementalVersion} \
+   -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
    versions:commit'
    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
    def version = matcher[0][1]
    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
-   echo '${IMAGE_NAME}'
+   echo "${IMAGE_NAME}"
 }
 
 def buildJar() {
@@ -19,7 +19,7 @@ def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'Docker-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh 'docker build -t jason8746/java-maven-app:${IMAGE_NAME} .'
-        sh "echo $PASS | docker login -u $USER --password-stdin"
+        sh 'echo $PASS | docker login -u $USER --password-stdin'
         sh 'docker push jason8746/java-maven-app:${IMAGE_NAME}'
     }
 } 
