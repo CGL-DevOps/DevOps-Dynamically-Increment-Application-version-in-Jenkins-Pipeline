@@ -1,20 +1,26 @@
-### Configure Webhook to trigger CI Pipeline automatically on every change
+### Dynamically Increment Application version in Jenkins Pipeline
 
 ### Technologies used:
 
-Jenkins, Github, Git, Docker, Java, Maven
+Jenkins, Docker, Github, Git, Java, Maven
 
 ### Project Description:
 
-1- Install Multibranch Scan Webhook Trigger Plugin in Jenkins
+1- Configure CI step: Increment patch version
 
-2- Configure Trigger token in Jenkins and connect with Github project settings
+2- Configure CI step: Build Java application and clean old artifacts
 
-3- Configure Jenkins to trigger the CI pipeline, whenever a change is pushed to Github
+3- Configure CI step: Build Image with dynamic Docker Image Tag
+
+4- Configure CI step: Push Image to private DockerHub repository
+
+5- Configure CI step: Commit version update of Jenkins back to Git repository
+
+6- Configure Jenkins pipeline to not trigger automatically on CI build commit to avoid commit loop
 
 ### Usage instructions:
 
-###### Step 1: Install Multibranch Scan Webhook Trigger Plugin in Jenkins UI
+###### Step 1: Increment patch version
 
 ![image](image/Screenshot%202023-02-24%20at%2012.34.00%20am.png)
 
