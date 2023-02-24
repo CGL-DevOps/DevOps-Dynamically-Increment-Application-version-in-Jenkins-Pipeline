@@ -35,7 +35,7 @@ def commitVersionUpdate(){
         sh 'git add .'
         echo "${USER} ${PASS}"
         sh 'git commit -m "ci:version bump ${BUILD_NUMBER}"'
-        sh 'git push origin HEAD:master
+        sh 'git push origin HEAD:master'
     }
 }
 
